@@ -1,53 +1,33 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="ms">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Attendance Site GPS v2.2</title>
+<title>Attendance Site GPS v2.2 - Testing</title>
 <style>
 :root{--green:#0f7a3b;--red:#b00020;--orange:#d98200;--bg:#f5f7f5;--line:#ddd;}
 *{box-sizing:border-box}body{font-family:Arial,sans-serif;margin:0;background:var(--bg);color:#222}
 header{background:var(--green);color:#fff;padding:14px 16px}header h2{margin:0;font-size:20px}.wrap{max-width:1200px;margin:auto;padding:12px}.card{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
 label{font-weight:bold;margin-top:8px;display:block}input,select,button,textarea{width:100%;padding:10px;margin-top:5px;border:1px solid #ccc;border-radius:8px;font-size:15px}input[readonly]{background:#f1f1f1}button{border:none;background:var(--green);color:white;font-weight:bold;cursor:pointer}button.secondary{background:#444}button.warning{background:var(--orange)}button.danger{background:var(--red)}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}.kpi{background:#effff3;border-left:6px solid var(--green);border-radius:10px;padding:12px}.kpi b{font-size:22px;display:block}.muted{font-size:13px;color:#666}.alert{display:none;background:#ffeef1;color:var(--red);font-weight:bold;padding:10px;border-radius:8px;white-space:pre-line}.ok{display:none;background:#eaffef;color:var(--green);font-weight:bold;padding:10px;border-radius:8px;white-space:pre-line}
-table{border-collapse:collapse;width:100%;background:#fff}th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}th{background:#e7f7ec}.scroll{overflow:auto}.photo{max-width:80px;max-height:70px;border-radius:6px;border:1px solid #ccc}.hidden{display:none}.smallbtn{font-size:13px;padding:8px}.important{background:#fff7e6;border-left:5px solid var(--orange);padding:10px;border-radius:8px}
+table{border-collapse:collapse;width:100%;background:#fff}th,td{border:1px solid var(--line);padding:8px;text-align:left;vertical-align:top}th{background:#e7f7ec}.scroll{overflow:auto}.photo{max-width:80px;max-height:70px;border-radius:6px;border:1px solid #ccc}.hidden{display:none} .smallbtn{font-size:13px;padding:8px}.important{background:#fff7e6;border-left:5px solid var(--orange);padding:10px;border-radius:8px}
 
 @media print{
   .no-print,button,input,select,label,textarea{display:none!important}
   .card{box-shadow:none}
   body{background:white}
-  body::after { display:block; }
-}
-
-body::after {
-  content: "Jurukur Jayamas";
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-30deg);
-  font-size: 70px;
-  color: rgba(0, 0, 0, 0.04);
-  white-space: nowrap;
-  letter-spacing: 3px;
-  pointer-events: none;
-  z-index: 0;
 }
 </style>
 </head>
 <body>
 
 <header style="display:flex; justify-content:space-between; align-items:center; padding:10px;">
-  <div style="text-align:left;">
-    <h2 style="margin:0;">👷 Attendance Site GPS v2.2 - Masa Auto Dari GPS Check-in & Check-out</h2>
-  </div>
-  <div>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAApCAMAAAC7p38EAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGtUExURQAAAP8AAP8AAP8BAf8CAf0HBfoOC/sMCv8AAP8AAPoPDP8BAf4EA/4CAv8BAP8CAv0GBf8AAP8AAP0CAv8CAf8AAP8AAP8AAPsMCfsNCv4CAv8AAP4DA/wIB7W1tbOzs95PT/kPDrW1tbOzs7Ozs9dfX/gREfEeHvsODNNpaf8AALS0tLOzs8p8fPcTE/8CAq+vr7S0tP8CArOzs/0FBPkQD6+vr/0AAP8BAcaGhvAjIvkODv4GBf8BAbOzs/8BAfwIB/0GBvoNDPsLCfoODPwHB/8AAP8AAL+/v7S0tN5MTPkODf8BAf8AAP8AAP8CAv8AAP8BAf4DAvkNDdZhYbqioug3N/4EA/8AAMx7e/IdHf0HBf4BAf8BAf8CAreoqPgQEPoMC/8BAf8DA/oMDORAQP8BAP4BAf4CAvwKCP4DAv4BAdxUVLioqPsNDLWtrdBwcPgSEf8CAvwLCvkNDNRkZPwHB/4DAvwJB/sLC/sKCPoMDNlZWfgREPsKCOBISLOzs/sKCfsKCfsKCrOzs7KysrS0tPcQEP0GBe8nJ/oODd9LS/sKCrOzs7Ozsw+n+KAAAACPdFJOUwAQiO/X9///UDD/3vDn8ZbvGFiQ4SBA/P//307o8jCv//8Y7////171/yiP9///6CDfas/t/xCa8/////Ttv/H71f3///Z0Fwi3///3SAiAOM/v////xO5dyf/03r7v////x+//0uLq8P/rtf///v///6T6/v//8/r//P7///3/KPX8/kBgn57xm/r//4B4FJZtOgAAAAlwSFlzAAAMdAAADHQB/z92kQAAAl9JREFUSEul1OlfEkEYB/A9YoBVKyMs0sBgOsyjpYMslS4zrTQL7L4oKzvpLjvMLjvtb+4zOzM7zw47uyDPO+b38N1lZng0raZ0XV5puHTDXNWkohtmBEXVSiwur9SUQ1iWpVJiLa1tIQonVEqspTVqoWAlvpoTvopDWFaYsmataxClHWbrGBGuJDzK+qRIOjZsFEkjSmoTUDq7QILaOuG35Epsrk/ClDSme4tdSmWWsnmMN66DbR6lO07QBKgpHMY93iVnSzK9vb1D4CkIWUXOwk7j/GKFfc8fZTd8rd5qZXsHlnZq1byGPfsA62uUmhAqXnvRpQkP86VK+37B91LYecPHBwS/2g0PMIPolAMUHTj0GFxtTqOHD0miNHjYycM3jo+gfHJUwBBpydpMnXGjJAFqkyfPQeJUnnmvBm5cJErly4PpUQcMY0pZ31s5Ap799RVPX7tupe4Ub5ZQe7Vit+6LYYCqszeobNLvzsMBtq9ufuixyFKozR+MK1pyYdz4AmV2UePcWbcUTxDBGznk1K5+vQZI8gRTT4fFE+wHAJjPOGjsEIvXpar+NVr8fMt9Oat+BCdp0SAgt69/1AlDd0fpYTWwvynGUZgXFykW574DFvQF/amCmXhKyS+UUL7nge9kMB46cdPD6AinMvMFbrlLmFr2q/fSiKT5gRUPERfr61pi0U4GNSEq0hEliTkmnMlCrdTJpjy528NwRUyXsIIpvgQTOkfqINgCq3cMiC4Aogldi/8iim55YKcEEUQthx7iig+hEcJIZyx5UsIJZwILKI0SRDlX9NEWP0H1h61KGMNnfgAAAAASUVORK5CYII=" style="width:80px;">
-  </div>
+  <h2 style="margin:0;">👷 Attendance Site GPS v2.2 - System TESTING</h2>
 </header>
 
 <div class="wrap">
 <div class="card important">
-<b>Prinsip kawalan:</b> Masa check-in dan check-out akan direkod secara automatik apabila butang GPS ditekan. Pekerja/mandor tidak perlu taip masa secara manual.
+<b>Prinsip kawalan:</b> Masa check-in dan check-out akan direkod secara automatik apabila butang GPS ditekan. Gambar yang diambil akan dikecilkan secara automatik supaya tidak membebankan memori telefon.
 </div>
 
 <div class="card no-print">
@@ -61,7 +41,7 @@ body::after {
 
 <div class="grid">
   <div>
-    <label>Masa Check-in (auto bila GPS diambil)</label>
+    <label>Masa Check-in (auto dari GPS)</label>
     <input id="checkIn" readonly placeholder="Auto dari GPS Check-in">
     <label>GPS Check-in</label>
     <input id="gpsIn" readonly placeholder="Tekan GPS Check-in">
@@ -69,7 +49,7 @@ body::after {
     <p id="gpsInStatus" class="muted"></p>
   </div>
   <div>
-    <label>Masa Check-out (auto bila GPS diambil)</label>
+    <label>Masa Check-out (auto dari GPS)</label>
     <input id="checkOut" readonly placeholder="Auto dari GPS Check-out">
     <label>GPS Check-out</label>
     <input id="gpsOut" readonly placeholder="Tekan GPS Check-out">
@@ -79,12 +59,12 @@ body::after {
   <div>
     <label>Gambar Check-in</label>
     <input id="photoInInput" type="file" accept="image/*" capture="environment" onchange="previewPhoto(event,'in')">
-    <img id="previewIn" class="photo hidden">
+    <br><img id="previewIn" class="photo hidden" style="margin-top:5px;">
   </div>
   <div>
     <label>Gambar Check-out</label>
     <input id="photoOutInput" type="file" accept="image/*" capture="environment" onchange="previewPhoto(event,'out')">
-    <img id="previewOut" class="photo hidden">
+    <br><img id="previewOut" class="photo hidden" style="margin-top:5px;">
   </div>
 </div>
 
@@ -127,13 +107,16 @@ body::after {
 </div>
 
 <script>
+// 全局核心变量声明（修复之前的未定义漏洞）
 let records = JSON.parse(localStorage.getItem('attendance_site_gps_v22')) || [];
-let photoIn='', photoOut='';
+let photoIn = ''; 
+let photoOut = '';
+
 function pad(n){return String(n).padStart(2,'0')}
 function todayISO(){const d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
 function currentDateTimeText(){const d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds())}
-function currentTimeText(){const d=new Date();return pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds())}
 document.getElementById('date').value=todayISO();document.getElementById('filterDate').value=todayISO();
+document.getElementById("genTime").innerText = new Date().toLocaleString();
 
 function takeGPS(type){
   const status = document.getElementById(type === 'in' ? 'gpsInStatus' : 'gpsOutStatus');
@@ -178,8 +161,7 @@ function takeGPS(type){
   );
 }
 
-document.getElementById("genTime").innerText = new Date().toLocaleString();
-
+// 修复后的高兼容图片压缩预览函数
 function previewPhoto(e, type) {
   const f = e.target.files[0];
   if (!f) return;
@@ -209,12 +191,14 @@ function previewPhoto(e, type) {
 
       if (type === 'in') {
         photoIn = compressedBase64;
-        document.getElementById('previewIn').src = photoIn;
-        document.getElementById('previewIn').classList.remove('hidden');
+        const previewElement = document.getElementById('previewIn');
+        previewElement.src = photoIn;
+        previewElement.classList.remove('hidden');
       } else {
         photoOut = compressedBase64;
-        document.getElementById('previewOut').src = photoOut;
-        document.getElementById('previewOut').classList.remove('hidden');
+        const previewElement = document.getElementById('previewOut');
+        previewElement.src = photoOut;
+        previewElement.classList.remove('hidden');
       }
     };
     img.src = x.target.result;
@@ -282,8 +266,8 @@ function saveRecord(){
     checkOut,
     gpsOut,
     hours,
-    photoIn,
-    photoOut,
+    photoIn: photoIn,
+    photoOut: photoOut,
     note,
     createdAt: currentDateTimeText()
   };
@@ -312,7 +296,22 @@ function saveRecord(){
   display();
 }
 
-function resetForm(){document.getElementById('name').value='';document.getElementById('site').value='';document.getElementById('checkIn').value='';document.getElementById('checkOut').value='';document.getElementById('gpsIn').value='';document.getElementById('gpsOut').value='';document.getElementById('note').value='';document.getElementById('photoInInput').value='';document.getElementById('photoOutInput').value='';document.getElementById('previewIn').classList.add('hidden');document.getElementById('previewOut').classList.add('hidden');photoIn='';photoOut=''}
+function resetForm(){
+  document.getElementById('name').value='';
+  document.getElementById('site').value='';
+  document.getElementById('checkIn').value='';
+  document.getElementById('checkOut').value='';
+  document.getElementById('gpsIn').value='';
+  document.getElementById('gpsOut').value='';
+  document.getElementById('note').value='';
+  document.getElementById('photoInInput').value='';
+  document.getElementById('photoOutInput').value='';
+  document.getElementById('previewIn').classList.add('hidden');
+  document.getElementById('previewOut').classList.add('hidden');
+  photoIn='';
+  photoOut='';
+}
+
 function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 
 function display(){
